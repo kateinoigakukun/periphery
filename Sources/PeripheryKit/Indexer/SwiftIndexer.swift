@@ -89,7 +89,7 @@ final class SwiftIndexer: TypeIndexer {
         guard let syntaxTreeJson = syntaxTree[SourceKit.Key.serializedSyntaxTree.rawValue] as? String else { return }
 
         let analyzer = UnusedParameterAnalyzer()
-        let params = try analyzer.analyze(file: sourceFile.path, json: syntaxTreeJson, parseProtocols: true)
+        let params = (try? analyzer.analyze(file: sourceFile.path, json: syntaxTreeJson, parseProtocols: true)) ?? []
 
         for param in params {
             guard let functionDecl = try functionDecl(for: param, sourceKit) else { continue }

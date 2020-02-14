@@ -43,6 +43,7 @@ public final class Xcodebuild: Injectable {
             "-\(project.type)", project.path.absolute().string,
             "-scheme", scheme,
             "-parallelizeTargets",
+            "-destination", "generic/platform=iOS",
             "-derivedDataPath", try derivedDataPath(for: project).string
         ]
 
@@ -88,6 +89,7 @@ public final class Xcodebuild: Injectable {
         let args = [
             "-\(project.type)", project.path.absolute().string,
             "-showBuildSettings",
+            "-destination", "generic/platform=iOS",
             "-scheme", scheme
         ]
 
